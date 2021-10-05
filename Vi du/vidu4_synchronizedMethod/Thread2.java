@@ -5,7 +5,21 @@ public class Thread2 extends Thread{
 	Thread2(){
 		this.t = t;
 	}
-	 public void run() {
+	
+	 public Thread2(Table t) {
+		super();
+		this.t = t;
+	}
+
+	public Table getT() {
+		return t;
+	}
+
+	public void setT(Table t) {
+		this.t = t;
+	}
+
+	public void run() {
 		 t.printTable(100);
 	 }
 }

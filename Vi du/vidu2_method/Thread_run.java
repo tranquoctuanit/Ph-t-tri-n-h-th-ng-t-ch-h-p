@@ -2,7 +2,7 @@ package vidu2_method;
 
 class Thread_run extends Thread {
     public void run() {
-        System.out.println("running...");
+        System.out.println("running ...");
     }
  
     public static void main(String args[]) {

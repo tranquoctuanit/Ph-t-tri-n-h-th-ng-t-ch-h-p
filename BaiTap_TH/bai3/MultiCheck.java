@@ -19,7 +19,7 @@ public class MultiCheck {
         FileWriter fw = null;
  
         try {
-            String data ="@@@@@@@@@@      "+"In ket qua Thread: "+BS(n)+" @@@@@@@@@@         ";
+            String data ="@@@@@@@@@@      "+"In ket qua Thread: "+BS(n)+" @@@@@@@@@@         " + "\n";
             File file = new File("T:\\\\Hoc\\\\Phat trien he thong tich hop\\\\Thuc Hanh\\\\Phat-trien-he-thong-tich-hop\\\\BaiTap_TH\\\\bai3\\\\data.txt");
             // nếu tệp không tại thì tạo tệp
             if (!file.exists()) {

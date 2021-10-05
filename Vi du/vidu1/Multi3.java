@@ -2,7 +2,7 @@ package vidu1;
 
 class Multi3 implements Runnable {
     public void run() {
-        System.out.println("thread is running...");
+        System.out.println("thread is running implements Runnable...");
     }
  
     public static void main(String args[]) {

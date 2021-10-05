@@ -1,1 +1,3 @@
-@@@@@@@@@@      In ket qua Thread: 7  14  21  28  35   là bội số của 7 @@@@@@@@@@         @@@@@@@@@@      In ket qua Thread: 7  14  21  28  35   là bội số của 7 @@@@@@@@@@         @@@@@@@@@@      In ket qua Thread: 3  6  9  12  15   là bội số của 3 @@@@@@@@@@         
+@@@@@@@@@@      In ket qua Thread: 6  12  18  24  30   là bội số của 6 @@@@@@@@@@         
+@@@@@@@@@@      In ket qua Thread: 7  14  21  28  35   là bội số của 7 @@@@@@@@@@         
+@@@@@@@@@@      In ket qua Thread: 6  12  18  24  30   là bội số của 6 @@@@@@@@@@         
