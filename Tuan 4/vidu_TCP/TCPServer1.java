@@ -1,4 +1,4 @@
-package vidu;
+package vidu_TCP;
 
 import java.io.IOException;
 import java.net.ServerSocket;
