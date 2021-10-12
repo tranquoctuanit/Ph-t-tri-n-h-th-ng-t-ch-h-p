@@ -41,7 +41,7 @@ public class ServerTCP {
         
         while(true) {
             //chờ yêu cầu từ client
-        	System.out.print("Connecting .....");
+        	System.out.print("Server Connecting .....");
             Socket connectionSocket = welcomeSocket.accept();
             
             //Tạo input stream, nối tới Socket
