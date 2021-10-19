@@ -7,6 +7,7 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.Scanner;
 
 
@@ -43,10 +44,12 @@ public class Client {
 
 			//gui tuy chon den server
 			DatagramPacket choose_DP = createPacket(choose, -1);
-
+			client.send(choose_DP);
+			
 			switch (choose) {
 			case 1:
-				
+				String[] sum1 = receiveData(client).split("_");
+				System.out.println("tong la: " + sum1[0]);
 				break;
 			case 2:
 
@@ -73,12 +76,21 @@ public class Client {
 
 				break;
 			default:
+				System.out.println("Vui long chon so trong menu");
 				break;
 			}
+			if(choose ==10) break;
+			
 		}
+		client.close();
 
 	}
 
+	public static void main(String[] args) throws IOException {
+		Client client = new Client(InetAddress.getLocalHost(), 3000);
+		client.execute();
+	}
+	
 	//ham nhan data
 	private String receiveData(DatagramSocket client) throws IOException {
 		byte[] temp = new byte[1024];

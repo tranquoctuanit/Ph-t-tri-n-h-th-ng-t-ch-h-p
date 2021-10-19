@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 public class Server {
 
@@ -19,6 +20,7 @@ public class Server {
 	private void execute() throws IOException{
 		//tao socket
 		DatagramSocket server = new DatagramSocket(port);
+		System.out.println("Server is listening... ");
 
 		//nhan goi tin tu client
 		int[] mangSo = new int[1];
@@ -41,7 +43,7 @@ public class Server {
 
 			switch (choose) {
 			case 1:
-				sum1(a);
+				
 				sendData(sum1(a), -1, server, clientIP, clientPort);
 				break;
 			case 2:
@@ -71,11 +73,16 @@ public class Server {
 			default:
 				break;
 			}
+			if(choose ==10) break;
 		}
+		server.close();
 
 	}
 
-
+	public static void main(String[] args) throws IOException {
+		Server server = new Server(3000);
+		server.execute();
+	}
 
 	private String receiveData(DatagramSocket client) throws IOException {
 		byte[] temp = new byte[1024];
@@ -103,7 +110,7 @@ public class Server {
 
 	private String menu() {
 		String menu = "\n\n==================MENU===============\n"
-				+ "1.Tim uoc chung lon nha\n"
+				+ "1.Tinh tong 1+3+5+7+...+(2n+1)\n"
 				+ "2.Tim boi chung nho nhat\n"
 				+ "3.Sap xep tang dan\n"
 				+ "4.Sap xep giam dan\n";
@@ -120,6 +127,7 @@ public class Server {
 		}
 		return sum;
 	}
+	
 	
 	
 
