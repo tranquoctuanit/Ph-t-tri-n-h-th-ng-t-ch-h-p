@@ -9,7 +9,7 @@ import java.net.UnknownHostException;
 public class Server {
 
 	private int port;
-	private int a,b,c,d;
+	private int n;
 	private InetAddress clientIP;
 	private int clientPort;
 	public Server(int port) {
@@ -17,20 +17,20 @@ public class Server {
 		this.port = port;
 	}
 
-	private void execute() throws IOException{
+	void execute() throws IOException{
 		//tao socket
 		DatagramSocket server = new DatagramSocket(port);
 		System.out.println("Server is listening... ");
 
 		//nhan goi tin tu client
 		int[] mangSo = new int[1];
-		String [] arr_a = receiveData(server).split("_");
+		String [] arr_n = receiveData(server).split("_");
 
-		mangSo[Integer.parseInt(arr_a[1])-1] = Integer.parseInt(arr_a[0]);
-		
+		mangSo[Integer.parseInt(arr_n[1])-1] = Integer.parseInt(arr_n[0]);
 
-		a = mangSo[0];
-		
+
+		n = mangSo[0];
+
 
 		while(true) {
 
@@ -43,46 +43,29 @@ public class Server {
 
 			switch (choose) {
 			case 1:
+
+				sendData(sum1(n), -1, server, clientIP, clientPort);
 				
-				sendData(sum1(a), -1, server, clientIP, clientPort);
 				break;
 			case 2:
-
+				sendData(sum2(n), -1, server, clientIP, clientPort);
 				break;	
 			case 3:
-
+				sendData(sum3(n), -1, server, clientIP, clientPort);
 				break;
 			case 4:
-
-				break;
-			case 5:
-
-				break;
-			case 6:
-
-				break;
-			case 7:
-
-				break;
-			case 8:
-
-				break;
-			case 9:
-
+				
 				break;
 			default:
 				break;
 			}
-			if(choose ==10) break;
+			if(choose ==4) break;
 		}
 		server.close();
 
 	}
 
-	public static void main(String[] args) throws IOException {
-		Server server = new Server(3000);
-		server.execute();
-	}
+	
 
 	private String receiveData(DatagramSocket client) throws IOException {
 		byte[] temp = new byte[1024];
@@ -109,26 +92,51 @@ public class Server {
 	}
 
 	private String menu() {
-		String menu = "\n\n==================MENU===============\n"
-				+ "1.Tinh tong 1+3+5+7+...+(2n+1)\n"
-				+ "2.Tim boi chung nho nhat\n"
-				+ "3.Sap xep tang dan\n"
-				+ "4.Sap xep giam dan\n";
+		String menu = "\n\n=================MENU================\n"
+				+ "| 1. Tính tổng 1+3+5+7+...+(2n+1)   |\n"
+				+ "| 2. Tính tổng 1*2 + 2*3+...+n*(n+1)|\n"
+				+ "| 3. Tính tổng 1-2+3-4+...+(2n+1)4  |\n"
+				+ "| 4. Thoát                          |\n"
+				+"=====================================\n";
+
 		return menu;
 	}
-	
-	
+
+	//Tổng 1+3+5+7+...+(2n+1)
 	public static int sum1(int n) {
 		if(n<1)
 			return 0;
 		int sum = 0;
-		for(int i=1; i<=n;i=i+2) {
-			sum +=i;
+		for(int i = 0; i<=n; i++) {
+			sum += (2 * i + 1);
 		}
 		return sum;
 	}
-	
-	
-	
 
+	
+	//Tổng 1*2 + 2*3+...+n*(n+1)
+	public static int sum2(int n) {
+
+		int sum = 0;
+		for(int i=0;i<=n;i++) {
+			sum+=(i*(i+1));
+		}
+		return sum;
+	}
+
+	//Tong 1-2+3-4+...+(2n+1)4
+	public static int sum3(int n) {
+
+		int sum = 0;
+		for(int i=1;i<=n;i++) {
+			if(i%2==0) {
+				sum-=i;
+			}
+			else {
+				sum+=i;
+			}
+
+		}
+		return sum;
+	}
 }

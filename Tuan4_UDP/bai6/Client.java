@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class Client {
 	private InetAddress host;
 	private int port;
-	private int a;
+	private int n;
 	private Scanner sc = new Scanner(System.in);
 
 	public Client(InetAddress host, int port) {
@@ -23,74 +23,59 @@ public class Client {
 		this.port = port;
 	}
 
-	private void execute() throws IOException{
+	void execute() throws IOException{
 		DatagramSocket client = new DatagramSocket();
 
 		//nhap du lieu
-		a = input("Nhap vao so a : ");
-		
+		n = input("Nhap vao so n : ");
+
 		//dong goi packet
-		DatagramPacket a_DP = createPacket(a, 1);
-		
+		DatagramPacket n_DP = createPacket(n, 1);
+
 
 		//gui ca packet den server
 
-		client.send(a_DP);
-		
+		client.send(n_DP);
+
 		while(true) {
 			//nhan menu va in ra man hinh
 			System.out.println(receiveData(client));
-			int choose = input("Nhap vao tuy chon cua ban: ");
+			int choose = input("Nhập vào tùy chọn của bạn : ");
 
 			//gui tuy chon den server
 			DatagramPacket choose_DP = createPacket(choose, -1);
 			client.send(choose_DP);
-			
+
 			switch (choose) {
 			case 1:
-				String[] sum1 = receiveData(client).split("_");
-				System.out.println("tong la: " + sum1[0]);
+				String sum1[] = receiveData(client).split("_");
+
+				System.out.println("Tổng 1+3+5+7+...+(2n+1) = " + sum1[0] + "\n");
 				break;
 			case 2:
-
+				String sum2[] = receiveData(client).split("_");
+				System.out.println("Tổng 1*2 + 2*3+...+n*(n+1) =  " + sum2[0] + "\n");
 				break;	
 			case 3:
-
+				String sum3[] = receiveData(client).split("_");
+				System.out.println("Tổng 1-2+3-4+...+(2n+1)4 = " + sum3[0] + "\n");
 				break;
 			case 4:
 
 				break;
-			case 5:
-
-				break;
-			case 6:
-
-				break;
-			case 7:
-
-				break;
-			case 8:
-
-				break;
-			case 9:
-
-				break;
 			default:
-				System.out.println("Vui long chon so trong menu");
+				System.out.println("Vui lòng chọn sô trong menu");
 				break;
 			}
-			if(choose ==10) break;
-			
+			if(choose ==4) break;
+
 		}
 		client.close();
 
 	}
 
-	public static void main(String[] args) throws IOException {
-		Client client = new Client(InetAddress.getLocalHost(), 3000);
-		client.execute();
-	}
 	
+
 	//ham nhan data
 	private String receiveData(DatagramSocket client) throws IOException {
 		byte[] temp = new byte[1024];
