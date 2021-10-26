@@ -12,6 +12,7 @@ public class Server {
 	private int n;
 	private InetAddress clientIP;
 	private int clientPort;
+	
 	public Server(int port) {
 		super();
 		this.port = port;
@@ -27,11 +28,8 @@ public class Server {
 		String [] arr_n = receiveData(server).split("_");
 
 		mangSo[Integer.parseInt(arr_n[1])-1] = Integer.parseInt(arr_n[0]);
-
-
 		n = mangSo[0];
-
-
+		
 		while(true) {
 
 			//gui menu ve client
@@ -65,8 +63,6 @@ public class Server {
 
 	}
 
-	
-
 	private String receiveData(DatagramSocket client) throws IOException {
 		byte[] temp = new byte[1024];
 		DatagramPacket  receive_DP = new DatagramPacket(temp, temp.length);
@@ -84,6 +80,7 @@ public class Server {
 		server.send(send_result_Packet);
 	}
 
+	//gui menu qua client
 	private void sendMenu(String value, DatagramSocket server, InetAddress clientIP, int clientPort) throws IOException {
 		byte[] temp = new byte[1024];
 		temp = value.getBytes();
@@ -91,17 +88,19 @@ public class Server {
 		server.send(send_result_Packet);
 	}
 
+	//tao menu
 	private String menu() {
 		String menu = "\n\n=================MENU================\n"
 				+ "| 1. Tính tổng 1+3+5+7+...+(2n+1)   |\n"
 				+ "| 2. Tính tổng 1*2 + 2*3+...+n*(n+1)|\n"
-				+ "| 3. Tính tổng 1-2+3-4+...+(2n+1)4  |\n"
+				+ "| 3. Tính tổng 1-2+3-4+...+(2n+1)  |\n"
 				+ "| 4. Thoát                          |\n"
 				+"=====================================\n";
 
 		return menu;
 	}
-
+	
+	//xu ly
 	//Tổng 1+3+5+7+...+(2n+1)
 	public static int sum1(int n) {
 		if(n<1)
@@ -113,7 +112,6 @@ public class Server {
 		return sum;
 	}
 
-	
 	//Tổng 1*2 + 2*3+...+n*(n+1)
 	public static int sum2(int n) {
 

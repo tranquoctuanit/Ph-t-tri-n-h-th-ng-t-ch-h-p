@@ -32,9 +32,7 @@ public class Client {
 		//dong goi packet
 		DatagramPacket n_DP = createPacket(n, 1);
 
-
 		//gui ca packet den server
-
 		client.send(n_DP);
 
 		while(true) {
@@ -58,7 +56,7 @@ public class Client {
 				break;	
 			case 3:
 				String sum3[] = receiveData(client).split("_");
-				System.out.println("Tổng 1-2+3-4+...+(2n+1)4 = " + sum3[0] + "\n");
+				System.out.println("Tổng 1-2+3-4+...+(2n+1) = " + sum3[0] + "\n");
 				break;
 			case 4:
 
@@ -75,8 +73,7 @@ public class Client {
 	}
 
 	
-
-	//ham nhan data
+	//ham nhan data tu client
 	private String receiveData(DatagramSocket client) throws IOException {
 		byte[] temp = new byte[1024];
 		DatagramPacket  receive_DP = new DatagramPacket(temp, temp.length);
@@ -84,6 +81,7 @@ public class Client {
 		return new String(receive_DP.getData()).trim();
 	}
 
+	//tao packet
 	private DatagramPacket createPacket(int data, int index) {
 		String str = String.valueOf(data) + "_" + index;
 		byte[] arrData = str.getBytes();
@@ -92,6 +90,7 @@ public class Client {
 	}
 
 
+	//kiem tra nhap
 	private int input(String request) {
 		// TODO Auto-generated method stub
 		int number = 0;
