@@ -71,7 +71,7 @@ public class AppClient{
 					a = sc.nextLine();
 					System.out.print("Nhập vào ký tự cần đếm: "); 
 					b = sc.next().charAt(0);
-					System.out.println("Kết quả\nSố lần xuất hiện ký tự" + b +"trong chuỗi là : " + remoteObject.DemKyTu(a, b) + "\n");
+					System.out.println("Kết quả\nSố lần xuất hiện ký tự" + b +"trong chuỗi là : " + remoteObject.DemKTBatKy(a, b) + "\n");
 					break;
 				default:
 					System.out.print("Chương trình đã dừng");

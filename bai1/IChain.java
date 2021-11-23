@@ -11,7 +11,7 @@ public interface IChain extends Remote{
 	public  String ChuHoaDau(String st) throws RemoteException;
 	public  String ThayTheKyTu(String st, char kTim, char kThayThe) throws RemoteException;
 	public  int DemSoKyTu(String st) throws RemoteException;
-	public  int DemKyTu(String st, char kTu) throws RemoteException;
+	public  int DemKTBatKy(String st, char kTu) throws RemoteException;
 	
 }
 

@@ -85,7 +85,7 @@ public class ChainImpl extends UnicastRemoteObject implements IChain{
 	}
 
 	//Đếm số lần xuất hiện ký tự nhập từ bàn phím trong chuỗi
-	public  int DemKyTu(String st, char kTu) throws RemoteException{
+	public  int DemKTBatKy(String st, char kTu) throws RemoteException{
 		int dem =0;
 		for (int i = 0; i < st.length(); i++) {
 	        // Nếu ký tự tại vị trí thứ i bằng 'kytu' thì tăng dem lên 1
