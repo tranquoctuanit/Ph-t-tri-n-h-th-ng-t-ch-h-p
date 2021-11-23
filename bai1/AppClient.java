@@ -8,6 +8,7 @@ public class AppClient{
 	public static void main(String[] args) {
 		String a ;
 		char b,c;
+		int n;
 		
 		try
 		{
@@ -26,6 +27,7 @@ public class AppClient{
 				System.out.println("4. Chuyển ký tự đầu sau dấu cách thành in hoa");
 				System.out.println("5. Thay thể ký tự trong chuỗi");
 				System.out.println("6. Đếm số lượng ký tự trong chuỗi");
+				System.out.println("7. Đếm số lần xuất hiện ký tự nhập từ bàn phím trong chuỗi");
 				System.out.println("Nhập exit để thoát\n");
 				System.out.println("Nhập vào tùy chọn của bạn : ");
 				nhap = sc.nextLine();
@@ -35,25 +37,21 @@ public class AppClient{
 					a = sc.nextLine();
 					System.out.println("Kết quả " + remoteObject.DaoNguoc(a) + "\n");
 					break;
-					
 				case "2":
 					System.out.print("Nhập vào chuỗi: "); 
 					a = sc.nextLine();
 					System.out.println("Kết quả\nSố từ hoa trong chuỗi là :" + remoteObject.DemTu(a) + "\n");
 					break;
-					
 				case "3":
 					System.out.print("Nhập vào chuỗi: "); 
 					a = sc.nextLine();
 					System.out.println("Kết quả\nSố ký tự in hoa trong chuỗi là : " + remoteObject.DemSoKyTuHoa(a) + "\n");
 					break;
-					
 				case "4":
 					System.out.print("Nhập vào chuỗi: "); 
 					a = sc.nextLine();
 					System.out.println("Kết quả\nIn hoa trong chuỗi là : " + remoteObject.ChuHoaDau(a) + "\n");
 					break;
-					
 				case "5":
 					System.out.print("Nhập vào chuỗi: "); 
 					a = sc.nextLine();
@@ -63,13 +61,18 @@ public class AppClient{
 					c = sc.next().charAt(0);
 					System.out.println("Kết quả\nThay thế ký tự trong chuỗi là : " + remoteObject.ThayTheKyTu(a, b, c) + "\n");
 					break;
-					
 				case "6":
 					System.out.print("Nhập vào chuỗi: "); 
 					a = sc.nextLine();
 					System.out.println("Kết quả\nSố ký tự trong chuỗi là : " + remoteObject.DemSoKyTu(a) + "\n");
 					break;
-
+				case "7":
+					System.out.print("Nhập vào chuỗi: "); 
+					a = sc.nextLine();
+					System.out.print("Nhập vào ký tự cần đếm: "); 
+					b = sc.next().charAt(0);
+					System.out.println("Kết quả\nSố lần xuất hiện ký tự" + b +"trong chuỗi là : " + remoteObject.DemKyTu(a, b) + "\n");
+					break;
 				default:
 					System.out.print("Chương trình đã dừng");
 					break;

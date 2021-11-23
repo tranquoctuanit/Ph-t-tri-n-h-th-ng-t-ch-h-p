@@ -45,7 +45,7 @@ public class ChainImpl extends UnicastRemoteObject implements IChain{
 		return dem;
 
 	}
-	
+
 	//Chuyển ký tự đầu sau dấu cách thành in hoa
 	public  String ChuHoaDau(String st) throws RemoteException{
 		if (st.charAt(0)!=' ')
@@ -63,24 +63,35 @@ public class ChainImpl extends UnicastRemoteObject implements IChain{
 			}
 		return st;
 	}
-	
+
 	//Thay thể ký tự trong chuỗi
 	public  String ThayTheKyTu(String st, char kTim, char kThayThe) throws RemoteException{
 		st = st.replace(kTim,kThayThe);
 		return st;
 
 	}
-	
+
 	//Đếm số lượng ký tự trong chuỗi
 	public  int DemSoKyTu(String st) throws RemoteException{
 
 		int dem = 0;
 		for (int i=0;i<st.length();i++)
 			if ((st.charAt(i)<='a') || (st.charAt(i)<='z') || (st.charAt(i)<='A') || (st.charAt(i)<='Z'))
-				
+
 				dem++;
-				
+
 		return dem;
 
+	}
+
+	public  int DemKyTu(String st, char kTu) throws RemoteException{
+		int dem =0;
+		for (int i = 0; i < st.length(); i++) {
+	        // Nếu ký tự tại vị trí thứ i bằng 'kytu' thì tăng dem lên 1
+	        if (st.charAt(i) == kTu) {
+	            dem++;
+	        }
+	    }
+		return dem;
 	}
 }
