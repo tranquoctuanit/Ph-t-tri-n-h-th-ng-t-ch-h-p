@@ -1,2 +1,3 @@
 # Phát triển hệ thống tích hợp - DHCN
-Quốc Tuấn IT
+Tuần 1
+Trần Quốc Tuấn IT
